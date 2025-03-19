@@ -15,7 +15,7 @@ stages:
 - stage: CI
   displayName: 'Continuous Integration'
   jobs:
-    - job: Build
+    - job: BuildAndTest
       displayName: 'Build do Projeto'
       steps:
       - task: DotNetCoreCLI@2
@@ -28,4 +28,7 @@ stages:
         inputs:
           command: 'test'
           projects: './src/Review-Filmes.Test.Unit/Review-Filmes.Test.Unit.csproj'
-          
+    - job: Release
+      displayName: 'Release Docker'
+      dependsOn: BuildAndTest
+      #steps:
