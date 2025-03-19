@@ -6,7 +6,7 @@
 name: CI-CD
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: ubuntu-latest
