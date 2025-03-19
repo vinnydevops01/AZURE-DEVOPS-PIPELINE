@@ -42,3 +42,17 @@ stages:
             tags: |
               $(Build.BuildId)
               latest
+- stage: CD
+  displayName: 'Continuous Deployment'
+  jobs:
+    - job: Deploy
+      displayName: 'Deploy no Kubernetes'
+      steps: 
+      - task: KubernetesManifest@1
+        inputs:
+          action: 'deploy'
+          connectionType: 'kubernetesServiceConnection'
+          kubernetesServiceConnection: 'AKS-KUBE-PIPELINE'
+          namespace: 'default'
+          manifests: './k8s/deployment.yaml'
+          containers: 'vinnydevops01/azure-devops-pipeline:$(Build.BuildId)'
