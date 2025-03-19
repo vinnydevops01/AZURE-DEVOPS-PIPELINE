@@ -18,5 +18,7 @@ stages:
     - job: Build
       displayName: 'Build do Projeto'
       steps:
-      - script: echo Hello, world!
-        displayName: 'Run a one-line script'
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'build'
+          projects: './src/Review-Filmes.sln'
