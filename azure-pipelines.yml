@@ -19,6 +19,13 @@ stages:
       displayName: 'Build do Projeto'
       steps:
       - task: DotNetCoreCLI@2
+        displayName: Build
         inputs:
           command: 'build'
           projects: './src/Review-Filmes.sln'
+      - task: DotNetCoreCLI@2
+        displayName: Test
+        inputs:
+          command: 'test'
+          projects: './src/Review-Filmes.Test.Unit/Review-Filmes.Test.Unit.csproj'
+          
