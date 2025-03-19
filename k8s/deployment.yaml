@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
         - name: reviewfilmes
-          image: fabricioveronez/live-azure-devops
+          image: vinnydevops01/azure-devops-pipeline
           env:
           - name: ASPNETCORE_HTTP_PORTS
             value: "8080"
